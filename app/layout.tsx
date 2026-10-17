@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -34,9 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "font-sans",
         inter.variable,
       )}
-      suppressHydrationWarning
+      suppressHydrationWarning={true}
     >
       <body className="min-h-full flex flex-col">
+        <ClerkProvider >
         <QueryProvider>
           <ThemeProvider
             attribute="class"
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </ThemeProvider>
         </QueryProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
