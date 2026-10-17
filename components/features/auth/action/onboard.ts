@@ -6,7 +6,6 @@ import type { User } from "@/lib/generated/prisma/client";
 
 export async function onBoard() {
     const clerkUser = await currentUser();
-    console.log("clerkUser", clerkUser);
 
     if (!clerkUser) {
         throw new Error("Unauthorized")
